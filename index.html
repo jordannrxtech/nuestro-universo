@@ -9,7 +9,22 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
 #app{min-height:100vh;background:var(--bg)}
 header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}nav{max-width:1050px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-weight:900}.brand span{color:var(--accent)}nav a{color:var(--text);text-decoration:none;font-size:14px;margin-left:16px}.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:70px 20px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,#ff8eb044,transparent 65%);filter:blur(8px)}.hero>*{position:relative}.heart{font-size:64px;animation:beat 1.5s infinite}.hero h1{font-size:clamp(42px,8vw,82px);margin:12px 0 8px;letter-spacing:-3px}.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:18px}.btn{border:0;border-radius:999px;background:var(--accent);color:white;padding:13px 20px;font-weight:800;cursor:pointer;box-shadow:0 10px 30px #e84f8333;margin-top:24px}.container{max-width:1050px;margin:auto;padding:30px 20px 80px}section{margin:70px 0}.section-title{font-size:30px;margin-bottom:8px}.sub{color:var(--muted);margin-top:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 12px 35px #0000000d}.card h3{margin-top:0}.timeline{display:grid;gap:14px}.event{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:start}.date{font-weight:900;color:var(--accent)}.message{background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:28px;padding:28px;text-align:center}.message p{font-size:24px;line-height:1.45;margin:10px 0}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.photo{aspect-ratio:1;border-radius:22px;background:linear-gradient(135deg,#ffb5cb,#e84f83);display:grid;place-items:center;color:white;font-size:40px;cursor:pointer;overflow:hidden}.photo span{font-size:14px;background:#0005;padding:7px 10px;border-radius:99px}.counter{font-size:34px;font-weight:900;color:var(--accent)}footer{text-align:center;color:var(--muted);padding:30px;border-top:1px solid var(--line)}dialog{border:0;border-radius:25px;background:var(--surface);color:var(--text);padding:28px;max-width:420px;width:calc(100% - 40px);box-shadow:0 25px 80px #0008}dialog::backdrop{background:#0008}input,textarea{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:14px;padding:12px;margin:7px 0 12px;font:inherit}.close{float:right;background:none;border:0;color:var(--muted);font-size:22px;cursor:pointer}@keyframes beat{50%{transform:scale(1.13)}}@media(max-width:720px){nav a{display:none}.grid,.gallery{grid-template-columns:1fr}.event{grid-template-columns:1fr;gap:4px}.hero{min-height:72vh}}
-</style>
+#espera{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:var(--bg);
+  color:var(--text);
+}
+
+#contador13{
+  font-size:clamp(50px,12vw,100px);
+  font-weight:900;
+  color:var(--accent);
+}</style>
 </head><body><div id="app">
 <body>
 
@@ -29,7 +44,38 @@ header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:co
 </div></main><footer>Hecho con ❤️ para una historia que sigue escribiéndose.</footer>
 <dialog id="modal"><button class="close" onclick="modal.close()">×</button><h2 id="modalTitle"></h2><p id="modalText"></p><button class="btn" onclick="modal.close()">Cerrar</button></dialog>
 </div>
-<script>
+// ⏳ CONTADOR DE 13 HORAS
+const DURACION13 = 13 * 60 * 60 * 1000;
+
+let final13 = localStorage.getItem('finalContador13');
+
+if (!final13) {
+  final13 = Date.now() + DURACION13;
+  localStorage.setItem('finalContador13', final13);
+}
+
+function actualizar13() {
+  const restante = final13 - Date.now();
+
+  if (restante <= 0) {
+    document.querySelector('#espera').style.display = 'none';
+    localStorage.removeItem('finalContador13');
+    return;
+  }
+
+  const horas = Math.floor(restante / 3600000);
+  const minutos = Math.floor((restante % 3600000) / 60000);
+  const segundos = Math.floor((restante % 60000) / 1000);
+
+  document.querySelector('#contador13').textContent =
+    String(horas).padStart(2,'0') + ':' +
+    String(minutos).padStart(2,'0') + ':' +
+    String(segundos).padStart(2,'0');
+
+  setTimeout(actualizar13,1000);
+}
+
+actualizar13();<script>
 const messages=["Aunque estemos lejos, siempre hay un pedacito de ti conmigo. ❤️","Si pudiera repetir un momento contigo, elegiría muchos. 🥹","Gracias por formar parte de mi historia. ✨","Contigo, hasta los momentos pequeños se vuelven recuerdos grandes. 💕","Hoy también te elegiría para compartir una sonrisa. 🌙"];
 const modal=document.querySelector('#modal');
 function openNote(t,x){document.querySelector('#modalTitle').textContent=t;document.querySelector('#modalText').textContent=x;modal.showModal()}
