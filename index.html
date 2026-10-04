@@ -19,7 +19,10 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth
+}
 
 body{
   margin:0;
@@ -42,30 +45,34 @@ body{
   align-items:center;
   text-align:center;
   background:var(--bg);
+  padding:20px;
+}
+
+#pantallaContador .corazon{
+  font-size:65px;
+  animation:beat 1.5s infinite;
 }
 
 #pantallaContador h1{
-  font-size:clamp(24px,6vw,42px);
+  font-size:clamp(28px,7vw,50px);
+  margin:15px 0 10px;
+}
+
+#pantallaContador p{
+  color:var(--muted);
   margin:0 0 25px;
+  font-size:17px;
 }
 
 #contador13{
-  font-size:clamp(55px,14vw,110px);
+  font-size:clamp(55px,15vw,110px);
   font-weight:900;
   color:var(--accent);
   letter-spacing:2px;
 }
 
-#mensajeFinal{
-  display:none;
-  font-size:28px;
-  font-weight:800;
-  color:var(--accent);
-  margin-top:20px;
-}
-
 /* =========================
-   PÁGINA
+   PÁGINA PRINCIPAL
    ========================= */
 
 #app{
@@ -92,8 +99,13 @@ nav{
   gap:15px
 }
 
-.brand{font-weight:900}
-.brand span{color:var(--accent)}
+.brand{
+  font-weight:900
+}
+
+.brand span{
+  color:var(--accent)
+}
 
 nav a{
   color:var(--text);
@@ -122,7 +134,9 @@ nav a{
   filter:blur(8px)
 }
 
-.hero>*{position:relative}
+.hero>*{
+  position:relative
+}
 
 .heart{
   font-size:64px;
@@ -160,7 +174,9 @@ nav a{
   padding:30px 20px 80px
 }
 
-section{margin:70px 0}
+section{
+  margin:70px 0
+}
 
 .section-title{
   font-size:30px;
@@ -186,7 +202,9 @@ section{margin:70px 0}
   box-shadow:0 12px 35px #0000000d
 }
 
-.card h3{margin-top:0}
+.card h3{
+  margin-top:0
+}
 
 .timeline{
   display:grid;
@@ -268,17 +286,8 @@ dialog{
   box-shadow:0 25px 80px #0008
 }
 
-dialog::backdrop{background:#0008}
-
-input,textarea{
-  width:100%;
-  border:1px solid var(--line);
-  background:var(--bg);
-  color:var(--text);
-  border-radius:14px;
-  padding:12px;
-  margin:7px 0 12px;
-  font:inherit
+dialog::backdrop{
+  background:#0008
 }
 
 .close{
@@ -291,17 +300,30 @@ input,textarea{
 }
 
 @keyframes beat{
-  50%{transform:scale(1.13)}
+  50%{
+    transform:scale(1.13)
+  }
 }
 
 @media(max-width:720px){
-  nav a{display:none}
-  .grid,.gallery{grid-template-columns:1fr}
+
+  nav a{
+    display:none
+  }
+
+  .grid,
+  .gallery{
+    grid-template-columns:1fr
+  }
+
   .event{
     grid-template-columns:1fr;
     gap:4px
   }
-  .hero{min-height:72vh}
+
+  .hero{
+    min-height:72vh
+  }
 }
 </style>
 </head>
@@ -309,13 +331,19 @@ input,textarea{
 <body>
 
 <!-- =========================
-     CONTADOR DE 13 HORAS
+     CONTADOR
      ========================= -->
 
 <div id="pantallaContador">
-  <h1>Algo especial te espera ❤️</h1>
-  <div id="contador13">13:00:00</div>
-  <div id="mensajeFinal">✨ Es hora ✨</div>
+
+  <div class="corazon">❤️</div>
+
+  <h1>Algo especial te espera</h1>
+
+  <p>Falta poquito para entrar a nuestro universo ✨</p>
+
+  <div id="contador13">01:30:00</div>
+
 </div>
 
 
@@ -326,44 +354,58 @@ input,textarea{
 <div id="app">
 
 <header>
-<nav>
-  <div class="brand">Nuestro <span>Universo ❤️</span></div>
 
-  <div>
-    <a href="#historia">Historia</a>
-    <a href="#recuerdos">Recuerdos</a>
-    <a href="#cartita">Cartita</a>
-  </div>
+<nav>
+
+<div class="brand">
+Nuestro <span>Universo ❤️</span>
+</div>
+
+<div>
+<a href="#historia">Historia</a>
+<a href="#recuerdos">Recuerdos</a>
+<a href="#cartita">Cartita</a>
+</div>
+
 </nav>
+
 </header>
+
 
 <main>
 
 <section class="hero">
+
 <div>
-  <div class="heart">❤️</div>
 
-  <h1>Nosotros</h1>
+<div class="heart">❤️</div>
 
-  <p>
-    Un pequeño rincón para guardar nuestra historia,
-    nuestros recuerdos y todas esas cosas que hacen
-    que seamos nosotros.
-  </p>
+<h1>Nosotros</h1>
 
-  <button class="btn"
-  onclick="document.querySelector('#historia').scrollIntoView()">
-    Entrar a nuestro universo ✨
-  </button>
+<p>
+Un pequeño rincón para guardar nuestra historia,
+nuestros recuerdos y todas esas cosas que hacen
+que seamos nosotros.
+</p>
+
+<button class="btn"
+onclick="document.querySelector('#historia').scrollIntoView()">
+Entrar a nuestro universo ✨
+</button>
+
 </div>
+
 </section>
 
 
 <div class="container">
 
+
 <section id="historia">
 
-<h2 class="section-title">Nuestra historia 📖</h2>
+<h2 class="section-title">
+Nuestra historia 📖
+</h2>
 
 <p class="sub">
 Cambia estos momentos por los de ustedes.
@@ -371,21 +413,39 @@ Cambia estos momentos por los de ustedes.
 
 <div class="timeline">
 
-<div class="card event">
-<div class="date">Día 1</div>
-
-<div>
-<h3>Nos conocimos</h3>
-<p>Escribe aquí cómo empezó todo.</p>
-</div>
-</div>
-
 
 <div class="card event">
-<div class="date">Momento</div>
+
+<div class="date">
+Día 1
+</div>
 
 <div>
-<h3>Nuestro primer recuerdo</h3>
+
+<h3>
+Nos conocimos
+</h3>
+
+<p>
+Escribe aquí cómo empezó todo.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card event">
+
+<div class="date">
+Momento
+</div>
+
+<div>
+
+<h3>
+Nuestro primer recuerdo
+</h3>
 
 <p>
 Una llamada, una salida, una conversación
@@ -393,23 +453,33 @@ o ese momento que nunca olvidamos.
 </p>
 
 </div>
+
 </div>
 
 
 <div class="card event">
-<div class="date">Hoy</div>
+
+<div class="date">
+Hoy
+</div>
 
 <div>
-<h3>Seguimos escribiendo</h3>
+
+<h3>
+Seguimos escribiendo
+</h3>
 
 <p>
 Y esta historia todavía no tiene final. ❤️
 </p>
 
 </div>
-</div>
 
 </div>
+
+
+</div>
+
 </section>
 
 
@@ -417,9 +487,12 @@ Y esta historia todavía no tiene final. ❤️
 
 <div class="grid">
 
+
 <div class="card">
 
-<h3>⏳ Tiempo juntos</h3>
+<h3>
+⏳ Tiempo juntos
+</h3>
 
 <div class="counter" id="counter">
 Pon la fecha
@@ -434,7 +507,9 @@ Edita la fecha en el código para activar el contador.
 
 <div class="card">
 
-<h3>💞 Nuestra vibra</h3>
+<h3>
+💞 Nuestra vibra
+</h3>
 
 <p>
 Risas, conversaciones, recuerdos y esos pequeños
@@ -446,13 +521,16 @@ detalles que solo nosotros entendemos.
 
 <div class="card">
 
-<h3>🌙 Para cuando me extrañes</h3>
+<h3>
+🌙 Para cuando me extrañes
+</h3>
 
 <button class="btn" onclick="randomMessage()">
 Abrir mensaje
 </button>
 
 </div>
+
 
 </div>
 
@@ -472,23 +550,42 @@ Puedes reemplazarlos fácilmente.
 
 <div class="gallery">
 
+
 <div class="photo"
 onclick="openNote('Foto 1','Aquí puedes poner una foto especial. ❤️')">
+
 📷
-<span>Recuerdo 1</span>
+
+<span>
+Recuerdo 1
+</span>
+
 </div>
+
 
 <div class="photo"
 onclick="openNote('Foto 2','Aquí puedes poner otra foto especial. ✨')">
+
 📷
-<span>Recuerdo 2</span>
+
+<span>
+Recuerdo 2
+</span>
+
 </div>
+
 
 <div class="photo"
 onclick="openNote('Foto 3','Aquí puedes poner vuestro momento favorito. 🥹')">
+
 📷
-<span>Recuerdo 3</span>
+
+<span>
+Recuerdo 3
+</span>
+
 </div>
+
 
 </div>
 
@@ -499,7 +596,9 @@ onclick="openNote('Foto 3','Aquí puedes poner vuestro momento favorito. 🥹')"
 
 <div class="message">
 
-<h2>💌 Una cartita para ti</h2>
+<h2>
+💌 Una cartita para ti
+</h2>
 
 <p id="letter">
 “De todas las cosas bonitas que me han pasado,
@@ -519,7 +618,9 @@ Cambiar mensaje
 
 <div class="card">
 
-<h2>🔐 Nuestro espacio</h2>
+<h2>
+🔐 Nuestro espacio
+</h2>
 
 <p class="sub">
 Puedes activar una contraseña más adelante
@@ -535,7 +636,9 @@ Ver idea
 
 </section>
 
+
 </div>
+
 </main>
 
 
@@ -569,145 +672,145 @@ Cerrar
    MENSAJES
    ========================= */
 
-const messages=[
-  "Aunque estemos lejos, siempre hay un pedacito de ti conmigo. ❤️",
-  "Si pudiera repetir un momento contigo, elegiría muchos. 🥹",
-  "Gracias por formar parte de mi historia. ✨",
-  "Contigo, hasta los momentos pequeños se vuelven recuerdos grandes. 💕",
-  "Hoy también te elegiría para compartir una sonrisa. 🌙"
+const messages = [
+
+"Aunque estemos lejos, siempre hay un pedacito de ti conmigo. ❤️",
+
+"Si pudiera repetir un momento contigo, elegiría muchos. 🥹",
+
+"Gracias por formar parte de mi historia. ✨",
+
+"Contigo, hasta los momentos pequeños se vuelven recuerdos grandes. 💕",
+
+"Hoy también te elegiría para compartir una sonrisa. 🌙"
+
 ];
 
-const modal=document.querySelector('#modal');
+const modal = document.querySelector('#modal');
 
 function openNote(t,x){
-  document.querySelector('#modalTitle').textContent=t;
-  document.querySelector('#modalText').textContent=x;
-  modal.showModal();
+
+document.querySelector('#modalTitle').textContent = t;
+
+document.querySelector('#modalText').textContent = x;
+
+modal.showModal();
+
 }
 
 function randomMessage(){
-  document.querySelector('#letter').textContent=
-  '“'+messages[Math.floor(Math.random()*messages.length)]+'”';
+
+document.querySelector('#letter').textContent =
+'“' +
+messages[Math.floor(Math.random()*messages.length)] +
+'”';
+
 }
 
 
 /* =========================
-   CONTADOR DE TIEMPO JUNTOS
+   TIEMPO JUNTOS
    ========================= */
 
-const startDate='2026-01-01';
+const startDate = '2026-01-01';
 
 function updateCounter(){
 
-  const s=new Date(startDate+'T00:00:00');
-  const now=new Date();
+const s = new Date(startDate + 'T00:00:00');
 
-  if(isNaN(s)||s>now)return;
+const now = new Date();
 
-  let months=
-    (now.getFullYear()-s.getFullYear())*12+
-    now.getMonth()-s.getMonth();
+if(isNaN(s) || s > now) return;
 
-  if(now.getDate()<s.getDate())months--;
+let months =
+(now.getFullYear()-s.getFullYear()) * 12 +
+now.getMonth()-s.getMonth();
 
-  document.querySelector('#counter').textContent=
-    months+' meses ❤️';
+if(now.getDate() < s.getDate()){
+months--;
+}
+
+document.querySelector('#counter').textContent =
+months + ' meses ❤️';
+
 }
 
 updateCounter();
 
 
 /* =========================
-   CONTADOR PRINCIPAL
-   13 HORAS
+   CONTADOR GLOBAL
    ========================= */
 
-const DURACION=13*60*60*1000;
-
-let finalContador=
-  localStorage.getItem('contador13Final');
-
-
 /*
-   Si nunca se ha iniciado,
-   empieza las 13 horas ahora.
+   FECHA FINAL:
+   3 de octubre de 2026
+   9:00 PM
+   República Dominicana (UTC-4)
 */
 
-if(!finalContador){
-
-  finalContador=
-    Date.now()+DURACION;
-
-  localStorage.setItem(
-    'contador13Final',
-    finalContador
-  );
-}
+const fechaFinal =
+new Date('2026-10-03T21:00:00-04:00');
 
 
 function actualizarContador(){
 
-  const restante=
-    Number(finalContador)-Date.now();
+const ahora = new Date();
+
+const restante =
+fechaFinal.getTime() - ahora.getTime();
 
 
-  /* Cuando llega a cero */
+/* Cuando llega a las 9:00 PM */
 
-  if(restante<=0){
+if(restante <= 0){
 
-    document.querySelector(
-      '#contador13'
-    ).textContent='00:00:00';
+document.querySelector('#contador13').textContent =
+'00:00:00';
 
-    setTimeout(function(){
+document.querySelector('#pantallaContador').style.display =
+'none';
 
-      document.querySelector(
-        '#pantallaContador'
-      ).style.display='none';
+return;
 
-      localStorage.removeItem(
-        'contador13Final'
-      );
-
-    },1000);
-
-    return;
-  }
+}
 
 
-  /* Calcular tiempo */
+/* Calcular horas */
 
-  const horas=
-    Math.floor(restante/3600000);
-
-  const minutos=
-    Math.floor(
-      (restante%3600000)/60000
-    );
-
-  const segundos=
-    Math.floor(
-      (restante%60000)/1000
-    );
+const horas =
+Math.floor(restante / 3600000);
 
 
-  /* Mostrar */
+/* Calcular minutos */
 
-  document.querySelector(
-    '#contador13'
-  ).textContent=
-
-    String(horas).padStart(2,'0')+
-    ':'+
-    String(minutos).padStart(2,'0')+
-    ':'+
-    String(segundos).padStart(2,'0');
+const minutos =
+Math.floor(
+(restante % 3600000) / 60000
+);
 
 
-  setTimeout(
-    actualizarContador,
-    1000
-  );
+/* Calcular segundos */
+
+const segundos =
+Math.floor(
+(restante % 60000) / 1000
+);
+
+
+/* Mostrar contador */
+
+document.querySelector('#contador13').textContent =
+
+String(horas).padStart(2,'0') +
+':' +
+String(minutos).padStart(2,'0') +
+':' +
+String(segundos).padStart(2,'0');
+
+
+setTimeout(actualizarContador,1000);
+
 }
 
 
